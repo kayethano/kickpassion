@@ -1,0 +1,18 @@
+@media screen and (max-width: 480px) {
+	.project, .person, .float-left, .float-right, form, .contact-info, .info {
+		width: 100% !important;
+		margin: 0px !important;
+		margin-top: 2em !important;
+		padding: 0px !important;
+		text-align: center;
+		
+	}
+	
+	input, textarea {
+		width: 85%;
+	}
+	
+	.slider, .person-image {
+		display: none !important;
+	}
+}

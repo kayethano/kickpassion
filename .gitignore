@@ -1,1 +1,3 @@
 kickpassion/kickpassion/localsettings.py
+*.pyc
+*.pyo
