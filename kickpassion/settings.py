@@ -26,6 +26,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+AUTH_PROFILE_MODULE = ''
+
 DATABASES = {'default':
                    dj_database_url.config(
                   default='postgres://kayethano:90ldenb0y@localhost:5432/kickpassion')
@@ -127,7 +129,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'django_facebook',
+    #'django_facebook',
 
     'gunicorn',
 
