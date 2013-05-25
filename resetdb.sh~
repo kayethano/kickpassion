@@ -1,0 +1,6 @@
+#!/bin/sh
+
+sudo -u postgres dropdb brainn
+sudo -u postgres createdb brainn
+python manage.py syncdb --settings brainn.localsettings
+python manage.py runserver --settings brainn.localsettings
