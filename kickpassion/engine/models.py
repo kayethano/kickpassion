@@ -18,23 +18,6 @@ from django.http import HttpResponse
 
 from kickpassion.engine.thumbs import ImageWithThumbsField
 
-class Student(models.Model):
-	name = models.CharField(max_length=40)
-	school = models.CharField(max_length=255, blank=True, null=True, choices=SCHOOL_CHOICES)
-	carrer = models.CharField(max_length=50, blank=True, null=True)
-	facebook = models.CharField(max_length=50, blank=True, null=True)
-	twitter = models.CharField(max_length=20, blank=True, null=True)
-	#aditional fields
-	calification = models.IntegerField(default=1)
-	points = models.IntegerField(default=0)
-	total_surveys = models.IntegerField(default=0)
-
-	def __unicode__(self):
-		return u'%s' % (self.name)
-
-	def get_url(self):
-		return '/student/%s' % (self.pk)
-
 def make_upload_path(instance, filename):
     file_root, file_ext = os.path.splitext(filename)
     dir_name = '{module}/{model}'.format(module=instance._meta.app_label, model=instance._meta.module_name)

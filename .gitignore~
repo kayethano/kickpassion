@@ -1,4 +1,3 @@
-.gitignore
 kickpassion/kickpassion/localsettings.py
 *.pyc
 *.pyo
