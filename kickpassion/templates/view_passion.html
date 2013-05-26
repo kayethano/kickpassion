@@ -1,19 +1,62 @@
 {% extends "base.html" %}
 
 {% block content %}
-	{{ passion.owner }}
 
-	{{ passion.category }}
+	<div>
+		<div>
+			<label class="font20">Nombre de tu pasion</label>
+		</div>
+		<div>
+		{{ passion.name }}
+		</div>
+	</div>
 
-	{{ passion.name }}
+	<div>
+		<div>
+			<label class="font20">Consejero</label>
+		</div>
+		<div>
+		{{ passion.owner }}
+		</div>
+	</div>
 
-	{{ passion.video_url }}
+	<div>
+		<div>
+			<label class="font20">Categoria de la pasion</label>
+		</div>
+		<div>
+			{{ passion.category }}
+		</div>
+	</div>
 
-	{% for picture in passion.pictures.all %}
-		<img src="{{ picture.picture.url }}">
-	{% endfor %}
+	<div>
+		<div>
+			<label class="font20">Video Explicativo</label>
+		</div>
+		<div>
+			<iframe width="560" height="315" src="http://www.youtube.com/embed/{{ passion.get_youtube_id }}" frameborder="0" allowfullscreen></iframe>	
+		</div>
+	</div>
 
-	{{ passion.description }}
+	<div>
+		<div>
+			<label class="font20">Descripcion</label>
+		</div>
+		<div>
+			{{ passion.description }}
+		</div>
+	</div>
 
-	{{ passion.location }}
+	<div>
+		<div>
+			<label class="font20">Localizacion</label>
+		</div>
+		<div>
+			{{ passion.location }}
+		</div>
+	</div>
+	<div>
+		<a class="button-form button-blue" href="#">JOIN IN</a>
+	</div>
+
 {% endblock %}
