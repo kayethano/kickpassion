@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block content %}
+		{% include 'django_facebook/_facebook_js.html' %}
+
+		{% include "header.html" %}
+
+		<div id="sitemap">
+			
+			<div class="colors-strip group">
+				<div class="color-strip" style="background: #CC3221">&nbsp;</div>
+				<div class="color-strip" style="background: #EDDA32">&nbsp;</div>
+				<div class="color-strip" style="background: #5BA64C">&nbsp;</div>
+				<div class="color-strip" style="background: #374394">&nbsp;</div>
+				<div class="color-strip" style="background: #994395">&nbsp;</div>
+			</div>
+
+			<a href="#content1" class="sitemap-link">WHAT'S KICKPASSION</a>
+			<a href="#content2" class="sitemap-link">HOW IT WORKS?</a>
+			<a href="#content3" class="sitemap-link">BENEFITS</a>
+			<a href="#content4" class="sitemap-link last">COSTS</a>
+			
+			<div class="colors-strip group">
+				<div class="color-strip" style="background: #CC3221">&nbsp;</div>
+				<div class="color-strip" style="background: #EDDA32">&nbsp;</div>
+				<div class="color-strip" style="background: #5BA64C">&nbsp;</div>
+				<div class="color-strip" style="background: #374394">&nbsp;</div>
+				<div class="color-strip" style="background: #994395">&nbsp;</div>
+			</div>
+		</div>
+		
+		<div class="catch-phrase">
+			<div class="wrapper group">
+				<img src="{{ MEDIA_URL }}/img/kp.png" style="width:350px;max-width:75%;"></br>
+				"FIND YOUR PASSION AND CHANGE YOUR LIFE"
+			</div>
+
+			<div>
+				<form action="{% url facebook_connect %}?facebook_login=1" method="post">
+<<<<<<< HEAD
+					<a style="position:relative;top:50px" href="javascript:void(0);" class="button-form button-blue" onclick="F.connect(this.parentNode);">
+=======
+					<br /><a href="javascript:void(0);" class="button-form button-blue" onclick="F.connect(this.parentNode);">
+>>>>>>> c8df404f9691992b32788e37240b7f5373512fc9
+						JOIN US
+					</a>
+					<input type="hidden" name="next" value="{{ next|escape }}" />
+					{% csrf_token %} 
+				</form>
+			</div>
+
+		</div>
+
+		<div id="content1" class="area">
+			<div class="wrapper group">
+
+				KICKPASSION IS A PLACE WHERE YOU WILL FIND YOUR PASSIONS. YOUR LIFE WILL NEVER BE THE SAME.
+			
+			</div>
+		</div>
+
+		<div class="catch-phrase" style="background-image: url('/media/img/31.jpg')">
+			<div class="wrapper group">
+				The secret of existence does not consist solely on living, but to know what we live for.
+				</br>
+				Dostoievski
+			</div>
+		</div>
+
+		<div id="content2" class="area">
+			<div class="wrapper group">
+				
+				KICKPASSION HAS A LARGE COMMUNITY OF ARTISTS, DEPORTISTS, SCIENTISTS AND ENGINEERS WHICH LOVE AND HAVE A PASSION FOR WHAT THEY DO. YOU WILL HAVE THE OPPORTUNITY TO CONTACT AND MEET THEM AT THE WORKSHOPS THEY ORGANIZE WHICH WILL ENABLE YOU TO FIND YOUR PASSIONS THROUGH EXPERIMENTATION.
+			
+			</div>
+		</div>
+
+		<div class="catch-phrase" style="background-image: url('/media/img/dali.jpg')">
+			<div class="wrapper group">
+				"Even the soul, if it wants to recognize itself, shall have to watch itself through another soul"</br>
+				Plato
+			</div>
+		</div>
+
+		<div id="content3" class="area">
+			<div class="wrapper group">
+				
+				THERE IS NO BETTER WAY TO DISCOVER WHAT YOU LOVE DOING THAN DOING IT DOZENS OF TIMES YOURSELF. THANKS TO MEETING WITH PEOPLE THAT LOVE WHAT THEY DO YOU WILL DISCOVER WHAT YOUR PASSIONS ARE. YOUR LIFE WILL NEVER BE THE SAME.
+			
+			</div>
+		</div>
+
+		<div class="catch-phrase" style="background-image: url('/media/img/33.jpg')">
+			<div class="wrapper group">
+				"To transform the world we should begin with ourselves.
+				This is our responsibility, yours and mine because, however small our world is, if we can contribute with a point of view radically different than our everyday existence, then we could influence the world in its entirety"</br>
+				Krishnamurti
+			</div>
+		</div>
+
+
+		<div id="footer" class="area">
+			<div class="wrapper group">
+				Brainn Company &copy; 2013. All rights reserved.
+			</div>
+		</div>
+{% endblock %}

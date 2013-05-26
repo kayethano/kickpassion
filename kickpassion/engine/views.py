@@ -47,7 +47,7 @@ def passion(request):
 				passion.pictures.add(thisPicture)
 				passion.save()
 
-			return HttpResponseRedirect('/')
+			return HttpResponseRedirect('/passion/%s' % passion.pk )
 	else:
 		form = PassionForm()
 	return render_to_response('passion.html', 

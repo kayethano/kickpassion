@@ -15,6 +15,8 @@ urlpatterns = patterns('django.views.generic.simple',
 	url(r'^facebook/', include('django_facebook.urls')),
 	url(r'^accounts/', include('django_facebook.auth_urls')),
 
+    url(r'^logout/$', logout, {'next_page' : '/'}),
+
 
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
