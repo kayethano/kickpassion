@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm, Textarea, TextInput, Select
 
-from kickpassion.engine.models import Passion, Profile, Meeting
+from kickpassion.engine.models import Passion, Profile, Meeting, FIleInput
 
 class ProfileForm(ModelForm):
     class Meta:
