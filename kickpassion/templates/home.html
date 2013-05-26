@@ -2,8 +2,19 @@
 
 {% block content %}
 		{% include 'django_facebook/_facebook_js.html' %}
-		<div id="top"></div>
-		<div id="sitemap" class="fixed">
+
+		{% include "header.html" %}
+
+		<div id="sitemap">
+			
+			<div class="colors-strip group">
+				<div class="color-strip" style="background: #CC3221">&nbsp;</div>
+				<div class="color-strip" style="background: #EDDA32">&nbsp;</div>
+				<div class="color-strip" style="background: #5BA64C">&nbsp;</div>
+				<div class="color-strip" style="background: #374394">&nbsp;</div>
+				<div class="color-strip" style="background: #994395">&nbsp;</div>
+			</div>
+
 			<a href="#content1" class="sitemap-link">WHAT'S KICKPASSION</a>
 			<a href="#content2" class="sitemap-link">HOW IT WORKS?</a>
 			<a href="#content3" class="sitemap-link">BENEFITS</a>
@@ -20,12 +31,13 @@
 		
 		<div class="catch-phrase">
 			<div class="wrapper group">
+				<img src="{{ MEDIA_URL }}/img/kp.png" style="width:350px;max-width:75%;"></br>
 				"FIND YOUR PASSION AND CHANGE YOUR LIFE"
 			</div>
 
 			<div>
 				<form action="{% url facebook_connect %}?facebook_login=1" method="post">
-					<a href="javascript:void(0);" class="button-form button-blue" onclick="F.connect(this.parentNode);">
+					<a style="position:relative;top:50px" href="javascript:void(0);" class="button-form button-blue" onclick="F.connect(this.parentNode);">
 						JOIN US
 					</a>
 					<input type="hidden" name="next" value="{{ next|escape }}" />

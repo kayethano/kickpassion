@@ -26,7 +26,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
+AUTH_PROFILE_MODULE = 'engine.Profile'
 
 DATABASES = {'default':
                    dj_database_url.config(
