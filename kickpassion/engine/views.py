@@ -1,10 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.models import User
 
-from kickpassion.engine.models import Passion, Picture
-from kickpassion.engine.forms import PassionForm
+from kickpassion.engine.models import Passion, Picture, Meeting
+from kickpassion.engine.forms import PassionForm, MeetingForm
 
 
 @login_required(login_url='/login/')
@@ -56,4 +57,49 @@ def view_passion(request, passionID):
 	passion = get_object_or_404(Passion, pk=passionID)
 	return render_to_response('view_passion.html',
 		{'passion':passion}, context_instance=RequestContext(request))
+
+
+@login_required(login_url='/login/')
+def join_passion(request,passionID,userID):
+	passion = get_object_or_404(Passion, pk=passionID)
+	user = get_object_or_404(User, pk=userID)
+	#Add user to passion
+	passion.disciples.add(user)
+	passion.save()
+
+	return HttpResponse('JOIN OK')
+
+
+@login_required(login_url='/login/')
+def create_meeting(request, passionID):
+	#Validate counselor is owner of meeting
+	passion = get_object_or_404(Passion, owner=request.user)
+	if request.method == 'POST':
+		form = MeetingForm(request.POST)
+		if form.is_valid():
+			meeting = form.save(commit=False)
+			meeting.passion = passion
+			meeting.counselor = request.user
+			return HttpResponseRedirect('/')
+	else:
+		form = MeetingForm()
+	return render_to_response('meeting.html',
+		{'form':form}, context_instance=RequestContext(request))
+
+
+def view_meeting(request, meetingID):
+	meeting = get_object_or_404(Meeting, pk = meetingID)
+	return render_to_response('view_meeting.html', 
+		{'meeting':meeting}, context_instance = RequestContext(request))
+
+
+@login_required(login_url='/login/')
+def join_meeting(request,meetingID):
+	meeting = get_object_or_404(Meeting, pk=meetingID)
+	meeting.disciples.add(request.user)
+	meeting.save()
+	return HttpResponse('JOIN MEETING OK')
+
+
+
 

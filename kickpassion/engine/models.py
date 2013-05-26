@@ -55,11 +55,16 @@ class Passion(models.Model):
 	name = models.CharField(max_length=40)
 	video_url = models.URLField(max_length=100)
 	pictures = models.ManyToManyField(Picture, blank=True, null=True)
+	disciples = models.ManyToManyField(User, blank=True, related_name='passion disciples')
 	description = models.CharField(max_length=1000)
 	location = models.CharField(max_length=100)
+	date = models.DateTimeField(auto_now_add=True)
 
 	def __unicode__(self):
 		return u'%s' % (self.name)
+
+	def get_youtube_id(self):
+		return self.video_url.split("v=")[1]
 
 
 class Profile(FacebookProfileModel):
@@ -86,9 +91,13 @@ class Profile(FacebookProfileModel):
 class Meeting(models.Model):
 	passion = models.ForeignKey(Passion)
 	counselor = models.ForeignKey(User, related_name='meeting counselor')
-	disciples = models.ManyToManyField(User, related_name='meeting disciples')
+	disciples = models.ManyToManyField(User, related_name='meeting disciples', blank=True, null=True)
+	details = models.CharField(max_length=1024)
 	date = models.DateTimeField()
 	is_presential = models.BooleanField()
 
 	def __unicode__(self):
 		return u'%s' % self.passion
+
+
+
