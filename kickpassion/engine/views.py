@@ -73,7 +73,8 @@ def join_passion(request,passionID,userID):
 	user.get_profile().passions.add(passion)
 	user.save()
 
-	return HttpResponse('JOIN OK')
+	return HttpResponseRedirect('/passion/my-passions/')
+
 
 
 @login_required(login_url='/login/')
