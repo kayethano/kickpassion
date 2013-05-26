@@ -68,7 +68,6 @@ class Profile(FacebookProfileModel):
 	picture = models.ImageField(upload_to=make_upload_path)#default = '/media/img/cuantoo_profile_picture.png')
 	location = models.CharField(max_length=100)
 	bio = models.CharField(max_length=500)
-	is_counselor = models.BooleanField()
 	disciples = models.ManyToManyField(User, blank=True)
 	counselors = models.ManyToManyField(User, blank=True)
 	teach_passions = models.ManyToManyField(Passion)
@@ -91,6 +90,7 @@ class Meeting(models.Model):
 	disciples = models.ManyToManyField(User)
 	date = models.DateTimeField()
 	is_presential = models.BooleanField()
+	description = models.CharField(max_length=1000)
 
 	def __unicode__(self):
 		return u'%s' % self.passion
