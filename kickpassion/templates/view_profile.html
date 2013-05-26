@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div>
+		{{ person.facebook_name }}
+	</div>
+
+	<div>
+		<div>
+			<label class="font20">Picture</label>
+		</div>
+		<div>
+		<img src="{{ person.picture.get_url }}" />
+		</div>
+	</div>
+
+	<div>
+		<div>
+			<label class="font20">Location</label>
+		</div>
+		<div>
+			{{ person.location }}
+		</div>
+	</div>
+
+	<div>
+		<div>
+			<label class="font20">Bio</label>
+		</div>
+		<div>
+			{{ person.bio }}
+		</div>
+	</div>
+
+	<div>
+		<div>
+			<label class="font20">Disciples</label>
+		</div>
+		{% for d in person.disciples.all %}
+		<div>
+			{{ d.username }}
+		</div>
+		{% endfor %}
+	</div>
+
+	<div>
+		<div>
+			<label class="font20">Counselors</label>
+		</div>
+		{% for c in person.counselors.all %}
+		<div>
+			{{ c.username }}
+		</div>
+		{% endfor %}
+	</div>
+
+	<div>
+		<div>
+			<label class="font20">Counselors</label>
+		</div>
+		{% for t in person.teach_passions.all %}
+		<div>
+			{{ t.name }}
+		</div>
+		{% endfor %}
+	</div>
+
+	<div>
+		<a class="button-form button-blue" href="#">JOIN IN</a>
+	</div>
+
+{% endblock %}
