@@ -26,7 +26,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-AUTH_PROFILE_MODULE = ''
+AUTH_PROFILE_MODULE = 'engine.Profile'
 
 DATABASES = {'default':
                    dj_database_url.config(
@@ -129,7 +129,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #'django_facebook',
+    'kickpassion.engine',
+
+    'django_facebook',
 
     'gunicorn',
 

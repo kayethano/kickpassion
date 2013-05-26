@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+		{% include 'django_facebook/_facebook_js.html' %}
 		<div id="top"></div>
 		<div id="sitemap" class="fixed">
 			<a href="/" class="sitemap-link">WHAT'S KICKPASSION</a>
@@ -21,6 +22,17 @@
 			<div class="wrapper group">
 				"FIND YOUR PASSION AND CHANGE YOUR LIFE"
 			</div>
+
+			<div>
+				<form action="{% url facebook_connect %}?facebook_login=1" method="post">
+					<a href="javascript:void(0);" class="button-form button-blue" onclick="F.connect(this.parentNode);">
+						JOIN US
+					</a>
+					<input type="hidden" name="next" value="{{ next|escape }}" />
+					{% csrf_token %} 
+				</form>
+			</div>
+			
 		</div>
 
 		<div id="content1" class="area">
