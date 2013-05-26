@@ -1,0 +1,24 @@
+<div class="top-bar">
+	<div class="inline-block">
+		<div class="inline-block">
+			<img src=" https://graph.facebook.com/{{ user }}/picture?type=square ">
+		</div>
+		<div class="inline-block">
+			<p class="font20">{{ user.get_full_name}}</p>
+		</div>
+	</div>
+	<div class="inline-block">
+		<a class="a-top" href="#">[My Passions]</a>
+		<a class="a-top" href="#">[Teach]</a>
+		<a class="a-top" href="#">[Meetings]</a>
+	</div>
+	<div class="inline-block">
+		<a class="a-top-red" href="/logout/">Cerrar Sesión</a>
+	</div>
+	<div>
+		<form action="/search/" method="GET">
+			<input class="input-search" type="text" name="q" placeholder="Find Passions">
+			<input class="button-top button-green" type="submit" value="Search">
+		</form>
+	</div>
+</div>
