@@ -4,7 +4,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 DATABASES = {'default':
                    dj_database_url.config(
-                  default='postgres://mario:5xaf9j9u@localhost:5432/kickpassion')
+                  default='postgres://kayethano:90ldenb0y@localhost:5432/kickpassion')
         }
 
 #CuantoDev Facebook Settings

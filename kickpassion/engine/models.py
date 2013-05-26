@@ -50,27 +50,26 @@ class Picture(models.Model):
 
 
 class Passion(models.Model):
-	owner = models.ForeignKey(User)
+	owner = models.ForeignKey(User, related_name='owner by passion')
 	category = models.CharField(max_length=40, choices=PASSION_CHOICES)
 	name = models.CharField(max_length=40)
 	video_url = models.CharField(max_length=40)
 	pictures = models.ManyToManyField(Picture)
 	description = models.CharField(max_length=1000)
 	location = models.CharField(max_length=100)
-	counselors = models.ManyToManyField(User, blank=True)
 
 	def __unicode__(self):
 		return u'%s' % (self.name)
 
 
 class Profile(FacebookProfileModel):
-	user = models.OneToOneField(User)
+	user = models.OneToOneField(User, related_name='profile user')
 	picture = models.ImageField(upload_to=make_upload_path)#default = '/media/img/cuantoo_profile_picture.png')
 	location = models.CharField(max_length=100)
 	bio = models.CharField(max_length=500)
 	is_counselor = models.BooleanField()
-	disciples = models.ManyToManyField(User, blank=True)
-	counselors = models.ManyToManyField(User, blank=True)
+	disciples = models.ManyToManyField(User, blank=True, related_name='profile disciples')
+	counselors = models.ManyToManyField(User, blank=True, related_name='profile counselors')
 	teach_passions = models.ManyToManyField(Passion)
 
 	def __unicode__(self):
@@ -87,8 +86,8 @@ class Profile(FacebookProfileModel):
 
 class Meeting(models.Model):
 	passion = models.ForeignKey(Passion)
-	counselor = models.ForeignKey(User)
-	disciples = models.ManyToManyField(User)
+	counselor = models.ForeignKey(User, related_name='meeting counselor')
+	disciples = models.ManyToManyField(User, related_name='meeting disciples')
 	date = models.DateTimeField()
 	is_presential = models.BooleanField()
 
