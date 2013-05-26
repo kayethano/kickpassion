@@ -1,5 +1,42 @@
 {% extends "base.html" %}
 
 {% block content %}
+	<div>
+		<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+			<div>
+				<div>
+					<label>Details</label>
+				</div>
+				<div>
+					{{ form.details }}
+					{{ form.details.errors  }}
 
+				</div>
+			</div>
+			<div>
+				<div>
+					<label>Date</label>
+				</div>
+				<div>
+					{{ form.date }}
+					{{ form.date.erros }}
+				</div>
+			</div>
+			<div>
+				<div>
+					<label>Is it Presential?</label>
+				</div>
+				<div>
+					{{ form.is_presential }}
+					{{ form.is_presential.errors }}
+				</div>
+			</div>
+			<div>
+				<div>
+					<input class="button-form button-green" type="submit" value="Guardar">
+				</div>
+
+			</div>
+		</form>
+	</div>
 {% endblock %}

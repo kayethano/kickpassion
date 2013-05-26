@@ -55,7 +55,7 @@ class PassionForm(forms.Form):
 class MeetingForm(ModelForm):
     class Meta:
         model = Meeting
-        exclude = ('passion','counselor','disciples','date')
+        exclude = ('passion','counselor','disciples')
         widgets = {
         'description' : TextInput(attrs={'placeholder':'Description'}),
         }
