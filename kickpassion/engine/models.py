@@ -74,7 +74,7 @@ class Profile(FacebookProfileModel):
 	bio = models.CharField(max_length=500)
 	disciples = models.ManyToManyField(User, blank=True, related_name='profile disciples')
 	counselors = models.ManyToManyField(User, blank=True, related_name='profile counselors')
-	passions = models.ManyToManyField(User, blank=True, related_name='profile passions')
+	passions = models.ManyToManyField(Passion, blank=True, related_name='profile passions')
 	teach_passions = models.ManyToManyField(Passion)
 
 	def __unicode__(self):

@@ -66,6 +66,9 @@ def join_passion(request,passionID,userID):
 	#Add user to passion
 	passion.disciples.add(user)
 	passion.save()
+	#Add passion to user
+	user.get_profile().passions.add(passion)
+	user.save()
 
 	return HttpResponse('JOIN OK')
 
@@ -129,5 +132,13 @@ def edit_profile(request, profileName):
 	            return HttpResponseRedirect('/user/%s' % (profileName))
 	    else:
 	        form = ProfileForm(instance=p)
-	    return render_to_response('profile.html', {'form' : form }, context_instance = RequestContext(request))
+	    return render_to_response('profile.html', 
+	    	{'form' : form }, context_instance = RequestContext(request))
 	return HttpResponse('No profile to edit')
+
+
+@login_required(login_url='/login/')
+def my_passions(request):
+	passions = request.user.get_profile().passions.all()
+	return render_to_response('my_passions.html', 
+		{'passions':passions}, context_instance = RequestContext(request))

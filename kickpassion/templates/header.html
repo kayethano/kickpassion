@@ -1,4 +1,4 @@
-<div class="top-bar text-align-center">
+<div class="top-bar text-align-center wrapper-div">
 	{% if user.is_authenticated %}
 	<div class="inline-block">
 		<div class="inline-block">
@@ -10,13 +10,13 @@
 	</div>
 	{% endif %}
 	<div class="inline-block">
-		<a class="a-top" href="#">[My Passions]</a>
+		<a class="a-top" href="/passion/my-passions/">[My Passions]</a>
 		<a class="a-top" href="/passion/new/">[Teach]</a>
 		<a class="a-top" href="#">[Meetings]</a>
 	</div>
 	{% if user.is_authenticated %}
 	<div class="inline-block">
-		<a class="a-top-red" href="/logout/">Cerrar Sesión</a>
+		<a class="a-top-red" href="/logout/">Logout</a>
 	</div>
 	{% endif %}
 	<div>

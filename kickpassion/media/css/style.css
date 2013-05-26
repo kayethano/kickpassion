@@ -63,6 +63,9 @@ ul {
 .text-align-center {
 	text-align: center !important;
 }
+.text-align-left{
+	text-align: left !important;
+}
 
 .hidden {
 	display: none;
@@ -110,9 +113,11 @@ body {
 	font-family: "Open Sans", sans-serif;
 	font-size: 14px;
 	font-weight: 300;
-	
 	text-align: left;
+	background: #333 url("/media/img/wavegrid.png");	
+	box-shadow: 0px 0px 2em rgba(0, 0, 0, 0.15);
 }
+
 
 .principal-title {
 	font-size: 5em;
@@ -277,7 +282,7 @@ body {
 	background: white;
 	border-radius: 5px;
 	border:1px solid gray;
-	width: 50%;
+	width: 100%;
 	font-family: "Muli", sans-serif;
 	font-weight: 300;
 	font-size: 1em;
@@ -303,9 +308,17 @@ body {
 }
 .font30{
 	font-size: 30px !important;
+	font-weight:bold;
 }
 .font20{
 	font-size: 20px !important;
+	font-weight:bold;
+}
+.font25{
+	font-size: 25px !important;
+}
+.font15{
+	font-size: 15px !important;
 }
 
 .inline-block{
@@ -329,4 +342,25 @@ body {
 	width: 400px;
 	border: 1px solid #B3B3B3;
 	background: #F8F8F8;
+}
+.margin10{
+	margin:10px !important;
+}
+.content{
+	margin: 0 auto !important;
+	width: 800px;
+}
+.wrapper-div{
+	background: white;
+	-webkit-box-shadow: 0px 0px 0px 5px ;
+	box-shadow: 0px 0px 0px 5px ; 
+	padding: 20px;
+	position: relative;
+	top:20px;
+}
+.wrapper-div2{
+	background: white;
+	-webkit-box-shadow: 0px 0px 0px 5px ;
+	box-shadow: 0px 0px 0px 5px ; 
+	padding: 5px;
 }

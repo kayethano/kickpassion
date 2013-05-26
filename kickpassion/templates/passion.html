@@ -4,31 +4,29 @@
 
 {% include "header.html" %}
 
-<div class="register text-align-center">	
-	<div>
+<div class="content text-align-left wrapper-div">	
+	<div class="text-align-center margin10">
 		<h1 class="font30">Show your passion to the world</h1>
 	</div>
 
 	<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
-		<div>
-			<label class="form-label">Select a category of your passion</label>
+		<div class="margin10">
+			<label class="form-label">Select a category of your passion</label></br>
 			{{ form.category }}
 			{{ form.category.errors }}
 		</div>
-		<div>
-			<label class="form-label">Name of your passion</label>
+		<div class="margin10">
+			<label class="form-label">Name of your passion</label></br>
 			{{ form.name }}
 			{{ form.name.errors }}
 		</div>
-		<div>
-			<label class="form-label">Youtube URL</label>
+		<div class="margin10">
+			<label class="form-label">Youtube URL</label></br>
 			{{ form.video_url }}
 			{{ form.video_url.errors }}
 		</div>
-		<div>
-
-			<h1>Upload some pictures about your passion</h1>
-
+		<div class="margin10">
+			<label class="form-label">Upload some pictures about your passion</label></br>
 									<div>
 									{{ form.picture1}}
 									</div>
@@ -68,16 +66,18 @@
 
 		</div>
 
-		<div>
+		<div class="margin10">
+			<label class="form-label">Description of your passion</label></br>
 			{{ form.description }}
 			{{ form.description.errors }}
 		</div>
-		<div>
+		<div class="margin10">
+			<label class="form-label">Location</label></br>
 			{{ form.location }}
 			{{ form.location.errors }}
 		</div>
-		<div>
-			<input class="button-form button-green" type="submit" value="Guardar">
+		<div class="text-align-center">
+			<input style="color:black" class="button-form button-green" type="submit" value="Guardar">
 		</div>
 	</form>
 </div>
