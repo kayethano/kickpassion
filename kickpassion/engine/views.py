@@ -1,3 +1,5 @@
+import urllib
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -132,6 +134,15 @@ def edit_profile(request, profileName):
 	        form = ProfileForm(instance=p)
 	    return render_to_response('profile.html', {'form' : form }, context_instance = RequestContext(request))
 	return HttpResponse('No profile to edit')
+
+def search(request):
+	q = urllib.unquote(request.GET.get('q',''))
+	q = q.strip()
+	if q != '':
+		results = Passion.objects.filter(name__icontains= q)
+		total = results.count()
+	return render_to_response('results.html', 
+		{'results':results, 'total':total, 'passion' : q}, context_instance=RequestContext(request))
 
 def autocomp(request):
 	q = request.GET.get('term', '')
