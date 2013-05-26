@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import ModelForm, Textarea, TextInput, Select, FileInput
+from django.forms import ModelForm, Textarea, TextInput, Select
 
 from kickpassion.engine.models import Passion, Profile, Meeting
 
@@ -15,9 +15,8 @@ PASSION_CHOICES = (
 class ProfileForm(ModelForm):
     class Meta:
         model = Profile
-        exclude = ('user','disciples','counselors','teach_passions')
+        exclude = ('user','picture','disciples','counselors','teach_passions')
         widgets = {
-        'picture' : FileInput(attrs={'placeholder':'Picture'}),
         'location' : TextInput(attrs={'placeholder':'Location'}),
         'bio' : TextInput(attrs={'placeholder':'Biography'}),
         }

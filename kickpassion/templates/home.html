@@ -22,7 +22,7 @@
 			<div class="wrapper group">
 				"FIND YOUR PASSION AND CHANGE YOUR LIFE"
 			</div>
-
+			{% if not user.is_authenticated %}
 			<div>
 				<form action="{% url facebook_connect %}?facebook_login=1" method="post">
 					<br /><a href="javascript:void(0);" class="button-form button-blue" onclick="F.connect(this.parentNode);">
@@ -32,6 +32,7 @@
 					{% csrf_token %} 
 				</form>
 			</div>
+			{% endif %}
 
 		</div>
 

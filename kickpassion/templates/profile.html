@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div>	
+
+	<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+		<div>
+			<label>Location</label>
+			{{ form.location }}
+			{{ form.location.errors }}
+		</div>
+		<div>
+			<label>Bio</label>
+			{{ form.bio }}
+			{{ form.bio.errors }}
+		</div>
+		<div>
+			<input class="button-form button-green" type="submit" value="Guardar">
+		</div>
+	</form>
+</div>
+{% endblock %}

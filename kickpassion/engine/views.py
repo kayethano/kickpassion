@@ -4,8 +4,8 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 
-from kickpassion.engine.models import Passion, Picture, Meeting
-from kickpassion.engine.forms import PassionForm, MeetingForm
+from kickpassion.engine.models import Passion, Picture, Meeting, Profile
+from kickpassion.engine.forms import PassionForm, MeetingForm, ProfileForm
 
 
 @login_required(login_url='/login/')
@@ -100,6 +100,34 @@ def join_meeting(request,meetingID):
 	meeting.save()
 	return HttpResponse('JOIN MEETING OK')
 
+def view_profile(request, profileName):
+	#dic={}
+	#lst=[]
+	#x=1
+	for p in Profile.objects.all():
+		if profileName == p.user.username:
+			return render_to_response('view_profile.html',
+				{'person':p}, context_instance=RequestContext(request))
+		#dic.update({'%s' % (x):u.user.username})
+		#lst.append(p.user.username)
+		#x=x+1
+	return HttpResponse('Sin Resultados') 
+	#ob = get_object_or_404(Profile, pk=3)
+	#dic.update({'1':ob.user.username})
 
-
-
+@login_required(login_url='/login/')
+def edit_profile(request, profileName):
+	valid=0
+	for p in Profile.objects.all():
+		if profileName == p.user.username:
+			valid=1
+	if valid==1:
+	    if request.method == 'POST':
+	        form = ProfileForm(request.POST, instance = p)
+	        if form.is_valid():
+	            post_edited = form.save()
+	            return HttpResponseRedirect('/user/%s' % (profileName))
+	    else:
+	        form = ProfileForm(instance=p)
+	    return render_to_response('profile.html', {'form' : form }, context_instance = RequestContext(request))
+	return HttpResponse('No profile to edit')
