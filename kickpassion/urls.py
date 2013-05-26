@@ -10,7 +10,6 @@ admin.autodiscover()
 urlpatterns = patterns('django.views.generic.simple',
 
 	url(r'^$', 'direct_to_template', {'template':'home.html'}),
-	url(r'^passion/new/', 'direct_to_template', {'template':'passion.html'}),
 
 	url(r'^passion/', include('kickpassion.engine.urls')),
 	url(r'^facebook/', include('django_facebook.urls')),

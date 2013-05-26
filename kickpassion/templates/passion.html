@@ -2,10 +2,82 @@
 
 {% block content %}
 
-<div class="register">
+
+<div class="register">	
+	<div>
+		<h1 class="font30">Show your passion to the world</h1>
+	</div>
+
 	<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
-		<input type="text" class="input-text">
-		<input type="submit" value="Guardar">
+		<div>
+			<label class="form-label">Select a category of your passion</label>
+			{{ form.category }}
+			{{ form.category.errors }}
+		</div>
+		<div>
+			<label class="form-label">Name of your passion</label>
+			{{ form.name }}
+			{{ form.name.errors }}
+		</div>
+		<div>
+			<label class="form-label">Youtube URL</label>
+			{{ form.video_url }}
+			{{ form.video_url.errors }}
+		</div>
+		<div>
+
+			<h1>Upload some pictures about your passion</h1>
+
+									<div>
+									{{ form.picture1}}
+									</div>
+
+									<div>
+									{{ form.picture2}}
+									</div>
+
+									<div>
+									{{ form.picture3}}
+									</div>
+
+									<div>
+									{{ form.picture4}}
+									</div>
+
+									<div>
+									{{ form.picture5}}
+									</div>
+
+									<div class="image-preview-wrapper" onclick="$('#id_picture1').click()">
+										<img src="{{ MEDIA_URL }}img/camera1.png" id="image1" width="100" height="100">
+									</div>
+									<div class="image-preview-wrapper" onclick="$('#id_picture2').click()">
+										<img src="{{ MEDIA_URL }}img/camera1.png" id="image2" width="100" height="100">
+									</div>
+									<div class="image-preview-wrapper" onclick="$('#id_picture3').click()">
+										<img src="{{ MEDIA_URL }}img/camera1.png" id="image3" width="100" height="100">
+									</div>
+									<div class="image-preview-wrapper" onclick="$('#id_picture4').click()">
+										<img src="{{ MEDIA_URL }}img/camera1.png" id="image4" width="100" height="100">
+									</div>
+									<div class="image-preview-wrapper" onclick="$('#id_picture5').click()">
+										<img src="{{ MEDIA_URL }}img/camera1.png" id="image5" width="100" height="100">
+									</div>
+
+
+		</div>
+
+		<div>
+			{{ form.description }}
+			{{ form.description.errors }}
+		</div>
+		<div>
+			{{ form.location }}
+			{{ form.location.errors }}
+		</div>
+		<div>
+			<input class="button-form button-green" type="submit" value="Guardar">
+		</div>
 	</form>
 </div>
 {% endblock %}

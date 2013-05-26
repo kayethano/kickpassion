@@ -53,8 +53,8 @@ class Passion(models.Model):
 	owner = models.ForeignKey(User, related_name='owner by passion')
 	category = models.CharField(max_length=40, choices=PASSION_CHOICES)
 	name = models.CharField(max_length=40)
-	video_url = models.CharField(max_length=40)
-	pictures = models.ManyToManyField(Picture)
+	video_url = models.URLField(max_length=100)
+	pictures = models.ManyToManyField(Picture, blank=True, null=True)
 	description = models.CharField(max_length=1000)
 	location = models.CharField(max_length=100)
 

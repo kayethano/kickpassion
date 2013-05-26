@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{{ passion.owner }}
+
+	{{ passion.category }}
+
+	{{ passion.name }}
+
+	{{ passion.video_url }}
+
+	{% for picture in passion.pictures.all %}
+		<img src="{{ picture.picture.url }}">
+	{% endfor %}
+
+	{{ passion.description }}
+
+	{{ passion.location }}
+{% endblock %}
