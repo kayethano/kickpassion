@@ -1,3 +1,11 @@
+<script type="text/javascript">
+	$(function() {
+ 		$("#srch").autocomplete({
+			source: "/search/autocomplete/",
+			minLength: 2,
+		});
+	});
+</script>
 <div class="top-bar text-align-center">
 	{% if user.is_authenticated %}
 	<div class="inline-block">
@@ -20,8 +28,8 @@
 	</div>
 	{% endif %}
 	<div>
-		<form action="/search/" method="GET">
-			<input class="input-search" type="text" name="q" placeholder="Find Passions">
+		<form action="/search/" method="GET" class="search-form header-search-form group">
+			<input id="srch" class="search-input" name="q" placeholder="Find Passions">
 			<input class="button-top button-green" type="submit" value="Search">
 		</form>
 	</div>
