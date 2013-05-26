@@ -13,6 +13,8 @@ urlpatterns = patterns('django.views.generic.simple',
 
 	url(r'^passion/', include('kickpassion.engine.urls')),
 	url(r'^facebook/', include('django_facebook.urls')),
+	url(r'^accounts/', include('django_facebook.auth_urls')),
+
 
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,3 +1,6 @@
+.gitignore
 kickpassion/kickpassion/localsettings.py
+kickpassion/media/engine/picture/
+kickpassion/media/images/facebook_profiles/
 *.pyc
 *.pyo

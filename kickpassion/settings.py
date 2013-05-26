@@ -26,7 +26,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-AUTH_PROFILE_MODULE = 'engine.Profile'
+AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
 
 DATABASES = {'default':
                    dj_database_url.config(
@@ -167,6 +167,6 @@ LOGGING = {
 }
 
 #Facebook Settings
-FACEBOOK_APP_ID = '297319107079702'
-FACEBOOK_APP_SECRET = ' f9d158676041c3253c9d4ffd06d51194'
+FACEBOOK_APP_ID = '473369646073054'
+FACEBOOK_APP_SECRET = 'e90c2c39a16d16fa7a4b7e301a0f5c60'
 FACEBOOK_LOGIN_DEFAULT_REDIRECT = '/'
