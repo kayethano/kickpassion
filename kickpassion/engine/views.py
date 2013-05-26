@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
+from django.utils import simplejson
 
 from kickpassion.engine.models import Passion, Picture, Meeting, Profile
 from kickpassion.engine.forms import PassionForm, MeetingForm, ProfileForm
@@ -132,9 +133,17 @@ def edit_profile(request, profileName):
 	            return HttpResponseRedirect('/user/%s' % (profileName))
 	    else:
 	        form = ProfileForm(instance=p)
-	    return render_to_response('profile.html', 
-	    	{'form' : form }, context_instance = RequestContext(request))
+	    return render_to_response('profile.html', {'form' : form }, context_instance = RequestContext(request))
 	return HttpResponse('No profile to edit')
+
+def search(request):
+	q = urllib.unquote(request.GET.get('q',''))
+	q = q.strip()
+	if q != '':
+		results = Passion.objects.filter(name__icontains= q)
+		total = results.count()
+	return render_to_response('results.html', 
+		{'results':results, 'total':total, 'passion' : q}, context_instance=RequestContext(request))
 
 
 @login_required(login_url='/login/')
@@ -142,3 +151,18 @@ def my_passions(request):
 	passions = request.user.get_profile().passions.all()
 	return render_to_response('my_passions.html', 
 		{'passions':passions}, context_instance = RequestContext(request))
+
+
+def autocomp(request):
+	q = request.GET.get('term', '')
+	passions = Passion.objects.filter(name__icontains = q )[:10]
+	results = []
+	for p in passions:
+		p_json = {}
+		p_json['id'] = p.id
+		p_json['label'] = p.name
+		p_json['value'] = p.name
+		results.append(p_json)
+	data = simplejson.dumps(results)
+	mimetype = 'application/json'
+	return HttpResponse(data, mimetype)

@@ -4,6 +4,8 @@ from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.views import logout
 
+from kickpassion.engine.views import search, autocomp
+
 admin.autodiscover()
 
 
@@ -16,6 +18,9 @@ urlpatterns = patterns('django.views.generic.simple',
 	url(r'^accounts/', include('django_facebook.auth_urls')),
 
     url(r'^logout/$', logout, {'next_page' : '/'}),
+
+    url(r'^search/$', search, name='search service'),
+    url(r'^search/autocomplete/$',autocomp, name ="autocomp"),
 
 
 
